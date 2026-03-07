@@ -3,9 +3,9 @@ import asyncio
 
 async def main():
     exchange_client = ccxt_patch.weex()
-    markets = await exchange_client.load_markets()
+    data = await exchange_client.fetch_tickers(symbols=['BTC/USDT', 'XRP/USDT:USDT'])
 
-    print(exchange_client.markets)
+    print(data)
 
 if __name__ == '__main__':
     asyncio.run(main())
