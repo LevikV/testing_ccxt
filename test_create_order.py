@@ -11,7 +11,7 @@ async def main():
         'password': api_password,
     }
     exchange_client = ccxt_patch.weex()
-    data = await exchange_client.create_order('CHZ/USDT:USDT', 'limit', 'sell', 100, 0.3770)
+    data = await exchange_client.create_order('SAHARA/USDT:USDT', 'limit', 'buy', 100, 0.02432)
     print(data)
 
 if __name__ == '__main__':
