@@ -3,7 +3,7 @@ import asyncio
 
 async def main():
     exchange_client = ccxt_patch.weex()
-    data = await exchange_client.fetch_funding_rate('BTC/USDT:USDT')
+    data = await exchange_client.fetch_funding_rate('XRP/USDT:USDT')
 
     print(data)
 
