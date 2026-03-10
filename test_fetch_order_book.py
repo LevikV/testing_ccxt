@@ -5,7 +5,7 @@ async def main():
     exchange_client = ccxt_patch.weex({
         'timeout': 30000,  # Таймаут в миллисекундах (30 секунд)
     })
-    data = await exchange_client.fetch_order_book('BTC/USDT:USDT')
+    data = await exchange_client.fetch_order_book('XRP/USDT')
 
     print(data)
 
