@@ -3,7 +3,9 @@ import asyncio
 
 async def main():
     exchange_client = ccxt_patch.weex()
+    symbol = 'XRP/USDT:USDT'
     data = await exchange_client.fetch_markets()
+    market = data[symbol]
 
     print(data)
 
