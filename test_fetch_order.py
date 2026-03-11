@@ -12,8 +12,8 @@ async def main():
         'timeout': 50000,
     }
     exchange_client = ccxt_patch.weex(params)
-    symbol = 'XRP/USDT'
-    order_id = '726241606604161053'
+    symbol = 'BTC/USDT:USDT'
+    order_id = '726500880697786909'
     data = await exchange_client.fetch_order(order_id, symbol)
 
     print(data)

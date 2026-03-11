@@ -12,9 +12,9 @@ async def main():
         'timeout': 50000,
     }
     exchange_client = ccxt_patch.weex(params)
-    symbol = 'BTC/USDT:USDT'
-    order_id = '726500880697786909'
-    data = await exchange_client.cancel_order(order_id, symbol)
+    symbols = ['BTC/USDT:USDT']
+    
+    data = await exchange_client.fetch_positions(symbols)
 
     print(data)
 

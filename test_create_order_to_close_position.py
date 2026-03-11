@@ -9,13 +9,14 @@ async def main():
         'apiKey': api_key,
         'secret': api_secret,
         'password': api_password,
-        'timeout': 50000,
     }
-    exchange_client = ccxt_patch.weex(params)
     symbol = 'BTC/USDT:USDT'
-    order_id = '726500880697786909'
-    data = await exchange_client.cancel_order(order_id, symbol)
-
+    exchange_client = ccxt_patch.weex(params)
+    
+    params_request = {
+        'positionSide': 'LONG',
+    }
+    data = await exchange_client.create_order(symbol, 'limit', 'sell', 0.0002, 69920, params_request)
     print(data)
 
 if __name__ == '__main__':

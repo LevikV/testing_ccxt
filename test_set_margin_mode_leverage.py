@@ -9,14 +9,14 @@ async def main():
         'apiKey': api_key,
         'secret': api_secret,
         'password': api_password,
-        'timeout': 50000,
     }
-    exchange_client = ccxt_patch.weex(params)
     symbol = 'BTC/USDT:USDT'
-    order_id = '726500880697786909'
-    data = await exchange_client.cancel_order(order_id, symbol)
-
-    print(data)
+    exchange_client = ccxt_patch.weex(params)
+    data_margin_mode = await exchange_client.set_margin_mode('isolated', symbol)
+    data_leverage = await exchange_client.set_leverage(1, symbol)
+    
+    print(data_leverage)
+    print(data_margin_mode)
 
 if __name__ == '__main__':
     asyncio.run(main())

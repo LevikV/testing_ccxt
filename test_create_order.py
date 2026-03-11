@@ -10,11 +10,10 @@ async def main():
         'secret': api_secret,
         'password': api_password,
     }
-    symbol = 'XRP/USDT'
+    symbol = 'BTC/USDT:USDT'
     exchange_client = ccxt_patch.weex(params)
-    #data_margin_mode = await exchange_client.set_margin_mode('isolated', symbol)
-    #data_leverage = await exchange_client.set_leverage(1, symbol)
-    data = await exchange_client.create_order(symbol, 'limit', 'buy', 5, 1.2)
+    
+    data = await exchange_client.create_order(symbol, 'limit', 'buy', 0.0002, 69730)
     print(data)
 
 if __name__ == '__main__':
