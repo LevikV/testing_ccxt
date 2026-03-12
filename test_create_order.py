@@ -13,7 +13,7 @@ async def main():
     symbol = 'BTC/USDT:USDT'
     exchange_client = ccxt_patch.weex(params)
     
-    data = await exchange_client.create_order(symbol, 'limit', 'buy', 0.0002, 69730)
+    data = await exchange_client.create_order(symbol, 'limit', 'buy', 0.0002, 69199)
     print(data)
 
 if __name__ == '__main__':

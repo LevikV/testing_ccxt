@@ -13,7 +13,7 @@ async def main():
     }
     exchange_client = ccxt_patch.weex(params)
     symbol = 'BTC/USDT:USDT'
-    order_id = '726500880697786909'
+    order_id = '726816407622255133'
     data = await exchange_client.fetch_order(order_id, symbol)
 
     print(data)
