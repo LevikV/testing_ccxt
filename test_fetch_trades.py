@@ -12,9 +12,9 @@ async def main():
         'timeout': 50000,
     }
     exchange_client = ccxt_patch.weex(params)
-    symbol = 'XRP/USDT'
+    symbol = 'BTC/USDT:USDT'
     
-    data = await exchange_client.fetch_ohlcv(symbol, '1m')
+    data = await exchange_client.fetch_trades(symbol)
 
     print(data)
 
