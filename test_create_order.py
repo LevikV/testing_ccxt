@@ -10,10 +10,10 @@ async def main():
         'secret': api_secret,
         'password': api_password,
     }
-    symbol = 'BTC/USDT:USDT'
+    symbol = 'CAPTCHA/USDT:USDT'
     exchange_client = ccxt_patch.weex(params)
     
-    data = await exchange_client.create_order(symbol, 'limit', 'buy', 0.0002, 69199)
+    data = await exchange_client.create_order(symbol, 'limit', 'buy', 1000, 0.001880)
     print(data)
 
 if __name__ == '__main__':

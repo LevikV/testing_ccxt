@@ -10,7 +10,7 @@ async def main():
         'secret': api_secret,
         'password': api_password,
     }
-    symbol = 'BTC/USDT:USDT'
+    symbol = 'CAPTCHA/USDT:USDT'
     exchange_client = ccxt_patch.weex(params)
     data_margin_mode = await exchange_client.set_margin_mode('isolated', symbol)
     data_leverage = await exchange_client.set_leverage(1, symbol)

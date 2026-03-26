@@ -12,7 +12,7 @@ async def main():
         'timeout': 50000,
     }
     exchange_client = ccxt_patch.weex(params)
-    symbol = 'BTC/USDT:USDT'
+    symbol = 'CAPTCHA/USDT:USDT'
     
     data = await exchange_client.fetch_position(symbol)
 
