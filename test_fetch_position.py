@@ -19,7 +19,10 @@ async def main():
     exchange_client = ccxt_patch.weex(params)
     symbol = 'CAPTCHA/USDT:USDT'
     
-    data = await exchange_client.fetch_position(symbol)
+    try:
+        data = await exchange_client.fetch_position(symbol)
+    finally:
+        await exchange_client.close()
 
     print(data)
 
