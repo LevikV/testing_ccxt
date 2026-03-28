@@ -1,5 +1,6 @@
 import ccxt_patch
 import asyncio
+from datetime import datetime
 
 async def main():
     api_key = 'weex_e23757a3867debd25002e6bbb814122b'
@@ -11,10 +12,15 @@ async def main():
         'password': api_password,
         'timeout': 50000,
     }
-    exchange_client = ccxt_patch.weex(params)
+    exchange_client = ccxt_patch.bitunix()
     symbol = 'XRP/USDT'
-    
-    data = await exchange_client.fetch_ohlcv(symbol, '1m')
+    ts_iso_from = '20.03.2026 00:00:00'
+    dt = datetime.strptime(ts_iso_from, '%d.%m.%Y %H:%M:%S')
+    since = int(dt.timestamp() * 1000)
+    try:
+        data = await exchange_client.fetch_ohlcv(symbol, '1m', since=since, limit=10)
+    finally:
+        await exchange_client.close()
 
     print(data)
 

@@ -2,8 +2,12 @@ import ccxt_patch
 import asyncio
 
 async def main():
-    exchange_client = ccxt_patch.weex()
-    data = await exchange_client.fetch_funding_rate('XRP/USDT:USDT')
+    symbol = 'XRP/USDT:USDT'
+    exchange_client = ccxt_patch.bitunix()
+    try:
+        data = await exchange_client.fetch_funding_rate(symbol)
+    finally:
+        await exchange_client.close()
 
     print(data)
 

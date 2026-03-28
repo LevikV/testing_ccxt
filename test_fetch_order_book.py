@@ -2,11 +2,14 @@ import ccxt_patch
 import asyncio
 
 async def main():
-    exchange_client = ccxt_patch.weex({
+    symbol = 'XRP/USDT:USDT'
+    exchange_client = ccxt_patch.bitunix({
         'timeout': 30000,  # Таймаут в миллисекундах (30 секунд)
     })
-    data = await exchange_client.fetch_order_book('XRP/USDT')
-
+    try:
+        data = await exchange_client.fetch_order_book(symbol)
+    finally:
+        await exchange_client.close()
     print(data)
 
 if __name__ == '__main__':
