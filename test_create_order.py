@@ -2,18 +2,17 @@ import ccxt_patch
 import asyncio
 
 async def main():
-    api_key = 'weex_e23757a3867debd25002e6bbb814122b'
-    api_secret = '440460e0d6322a28ce89f9cd0e94d43b847ac58a27b75d59fdd1c310749bb240'
-    api_password = '12fdFFr2'
+    api_key = 'd1210d02d3712a006d51921040ba0e82'
+    api_secret = 'a53ae00e6b798aebf526003c475f73b7'
+    
     params = {
         'apiKey': api_key,
         'secret': api_secret,
-        'password': api_password,
     }
-    symbol = 'CAPTCHA/USDT:USDT'
-    exchange_client = ccxt_patch.weex(params)
+    symbol = 'XRP/USDT'
+    exchange_client = ccxt_patch.bitunix(params)
     
-    data = await exchange_client.create_order(symbol, 'limit', 'buy', 1000, 0.001880)
+    data = await exchange_client.create_order(symbol, 'limit', 'buy', 10, 1.3)
     print(data)
 
 if __name__ == '__main__':
