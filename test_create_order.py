@@ -9,12 +9,16 @@ async def main():
         'apiKey': api_key,
         'secret': api_secret,
     }
-    symbol = 'XRP/USDT'
+    symbol = 'NOM/USDT:USDT'
     exchange_client = ccxt_patch.bitunix(params)
     
-    data = await exchange_client.create_order(symbol, 'limit', 'buy', 10, 1.3)
+    try:
+        data = await exchange_client.create_order(symbol, 'limit', 'buy', 1000, 0.00345)
+    except Exception as e:
+        print(e)
+    finally:
+        await exchange_client.close()
     print(data)
 
 if __name__ == '__main__':
     asyncio.run(main())
-

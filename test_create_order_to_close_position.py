@@ -2,21 +2,29 @@ import ccxt_patch
 import asyncio
 
 async def main():
-    api_key = 'weex_e23757a3867debd25002e6bbb814122b'
-    api_secret = '440460e0d6322a28ce89f9cd0e94d43b847ac58a27b75d59fdd1c310749bb240'
-    api_password = '12fdFFr2'
+    api_key = 'd1210d02d3712a006d51921040ba0e82'
+    api_secret = 'a53ae00e6b798aebf526003c475f73b7'
+    #api_password = '12fdFFr2'
     params = {
         'apiKey': api_key,
         'secret': api_secret,
-        'password': api_password,
+        #'password': api_password,
     }
     symbol = 'BTC/USDT:USDT'
-    exchange_client = ccxt_patch.weex(params)
+    exchange_client = ccxt_patch.bitunix(params)
     
     params_request = {
-        'positionSide': 'LONG',
+        'tradeSide': 'CLOSE',
+        'positionId': '2245056850317267013',
+        'reduceOnly': True
     }
-    data = await exchange_client.create_order(symbol, 'limit', 'sell', 0.0002, 69920, params_request)
+    try:
+        data = await exchange_client.create_order(symbol, 'limit', 'buy', 0.0002, 67260, params_request)
+    except Exception as e:
+        print(e)
+    finally:
+        await exchange_client.close()
+    
     print(data)
 
 if __name__ == '__main__':

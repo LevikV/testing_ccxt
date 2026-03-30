@@ -3,7 +3,13 @@ import asyncio
 
 async def main():
     exchange_client = ccxt_patch.bitunix()
-    data = await exchange_client.fetch_tickers(symbols=['BTC/USDT', 'XRP/USDT:USDT'])
+    symbols=['HFT/USDT', 'HFT/USDT:USDT']
+    try:
+        data = await exchange_client.fetch_tickers(symbols)
+    except Exception as e:
+        print(e)
+    finally:
+        await exchange_client.close()
 
     print(data)
 

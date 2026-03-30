@@ -2,19 +2,24 @@ import ccxt_patch
 import asyncio
 
 async def main():
-    api_key = 'weex_e23757a3867debd25002e6bbb814122b'
-    api_secret = '440460e0d6322a28ce89f9cd0e94d43b847ac58a27b75d59fdd1c310749bb240'
-    api_password = '12fdFFr2'
+    api_key = 'd1210d02d3712a006d51921040ba0e82'
+    api_secret = 'a53ae00e6b798aebf526003c475f73b7'
+    #api_password = '12fdFFr2'
     params = {
         'apiKey': api_key,
         'secret': api_secret,
-        'password': api_password,
+        #'password': api_password,
         'timeout': 50000,
     }
-    exchange_client = ccxt_patch.weex(params)
-    symbol = 'BTC/USDT:USDT'
-    order_id = '726814608307782173'
-    data = await exchange_client.cancel_order(order_id, symbol)
+    exchange_client = ccxt_patch.bitunix(params)
+    symbol = 'XRP/USDT:USDT'
+    order_id = '2038456902333808640'
+    try:
+        data = await exchange_client.cancel_order(order_id, symbol)
+    except Exception as e:
+        print(e)
+    finally:
+        await exchange_client.close()
 
     print(data)
 
